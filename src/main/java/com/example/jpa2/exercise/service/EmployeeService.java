@@ -1,5 +1,6 @@
 package com.example.jpa2.exercise.service;
 
+import com.example.jpa2.exercise.dto.EmployeeAgeAndNameDto;
 import com.example.jpa2.exercise.dto.EmployeeDto;
 import com.example.jpa2.exercise.entity.Employee;
 import com.example.jpa2.exercise.repository.EmployeeRepo;
@@ -44,4 +45,15 @@ public class EmployeeService {
         repo.deleteAll(emp);
         return "Deleted " + emp.size() + " employee";
     }
+
+    //Q2------------------------------------------------->
+    public List<EmployeeAgeAndNameDto> EmployeeWithlastnameSuffix(String suffix) {
+        return repo.getEmployeeWithSuffix(suffix);
+    }
+
+    public String deleteEmpWithAgeGreaterThen(int givenAge) {
+        return repo.deleteEmployeeWithAgeGreaterThen(givenAge) + " Employees deleted";
+    }
+
+
 }

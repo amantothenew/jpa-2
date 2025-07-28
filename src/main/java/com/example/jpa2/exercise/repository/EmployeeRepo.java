@@ -1,5 +1,6 @@
 package com.example.jpa2.exercise.repository;
 
+import com.example.jpa2.exercise.dto.EmployeeAgeAndNameDto;
 import com.example.jpa2.exercise.dto.EmployeeDto;
 import com.example.jpa2.exercise.entity.Employee;
 import org.springframework.data.domain.Pageable;
@@ -30,6 +31,16 @@ public interface EmployeeRepo extends JpaRepository<Employee, Long> {
     @Query("select e from Employee e where e.salary = (Select MIN(e2.salary) from Employee e2)")
     List<Employee> findEmployeeWithMinSalary();
 
+//    Q2 ----------------------------------------------------------------->
+
+
+    @Query("SELECT new com.example.jpa2.exercise.dto.EmployeeAgeAndNameDto(e.firstName, e.lastName, e.age) FROM Employee e WHERE e.lastName LIKE %:suffix")
+    List<EmployeeAgeAndNameDto> getEmployeeWithSuffix(@Param("suffix") String suffix);
+
+    @Modifying
+    @Transactional
+    @Query("delete from Employee e where e.age > :givenAge")
+    int deleteEmployeeWithAgeGreaterThen(@Param("givenAge") int givenAge);
 }
 
 

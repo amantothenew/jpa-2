@@ -1,5 +1,6 @@
 package com.example.jpa2.exercise.controller;
 
+import com.example.jpa2.exercise.dto.EmployeeAgeAndNameDto;
 import com.example.jpa2.exercise.dto.EmployeeDto;
 import com.example.jpa2.exercise.entity.Employee;
 import com.example.jpa2.exercise.service.EmployeeService;
@@ -38,6 +39,20 @@ public class EmployeeController {
     @DeleteMapping("/employees/min-salary")
     public String deleteEmpWithMinSalary() {
         return service.deleteEmployeeWithMinSalary();
+    }
+
+
+//    Q2--------------------------------------------------------------------->
+
+    @GetMapping("/employees/with/{suffix}")
+    public List<EmployeeAgeAndNameDto> getMatchingWithSuffix(@PathVariable String suffix) {
+        return service.EmployeeWithlastnameSuffix(suffix);
+    }
+
+
+    @DeleteMapping("/employees/age")
+    public String deleteEmpWithAgeGreaterThen(@RequestParam int age) {
+        return service.deleteEmpWithAgeGreaterThen(age);
     }
 
 }
