@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 public class EmployeeController {
-    EmployeeService service;
+    private EmployeeService service;
 
     public EmployeeController(EmployeeService service) {
         this.service = service;
@@ -54,5 +54,8 @@ public class EmployeeController {
     public String deleteEmpWithAgeGreaterThen(@RequestParam int age) {
         return service.deleteEmpWithAgeGreaterThen(age);
     }
+
+    //Q3--------------------------------------------------------------------->
+
 
 }
