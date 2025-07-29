@@ -16,9 +16,9 @@ public class EmployeeController {
         this.service = service;
     }
 
-    @GetMapping("/employees/{pageNo}")
-    public List<EmployeeDto> fetchAll(@PathVariable int pageNo) {
-        return service.getAllAboveAverageEmployeeWithSorting(pageNo);
+    @GetMapping("/employees")
+    public List<EmployeeDto> fetchAll() {
+        return service.getAllAboveAverageEmployeeWithSorting();
     }
 
     @PostMapping("/employees")

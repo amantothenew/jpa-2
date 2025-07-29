@@ -21,14 +21,8 @@ public class EmployeeService {
         this.repo = repo;
     }
 
-    public List<EmployeeDto> getAllAboveAverageEmployeeWithSorting(int pageNo) {
-        Sort sort = Sort.by(
-                new Sort.Order(Sort.Direction.ASC, "age"),
-                new Sort.Order(Sort.Direction.DESC, "salary")
-        );
-        Pageable page = PageRequest.of(pageNo, 10, sort);
-        System.out.println(repo.getNameForAboveAverageSalariedEmployees(page));
-        return repo.getNameForAboveAverageSalariedEmployees(page);
+    public List<EmployeeDto> getAllAboveAverageEmployeeWithSorting() {
+        return repo.getNameForAboveAverageSalariedEmployees();
     }
 
     public List<Employee> saveAll(List<Employee> emp) {

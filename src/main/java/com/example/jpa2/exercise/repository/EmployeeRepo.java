@@ -17,8 +17,8 @@ import java.util.Objects;
 @Repository
 public interface EmployeeRepo extends JpaRepository<Employee, Long> {
 
-    @Query("SELECT new com.example.jpa2.exercise.dto.EmployeeDto(e.firstName, e.lastName) FROM Employee e WHERE e.salary > (SELECT AVG(e2.salary) FROM Employee e2)")
-    List<EmployeeDto> getNameForAboveAverageSalariedEmployees(Pageable page);
+    @Query("SELECT new com.example.jpa2.exercise.dto.EmployeeDto(e.firstName, e.lastName) FROM Employee e WHERE e.salary > (SELECT AVG(e2.salary) FROM Employee e2) order by e.age ASC, e.salary DESC")
+    List<EmployeeDto> getNameForAboveAverageSalariedEmployees();
 
     @Transactional
     @Modifying
